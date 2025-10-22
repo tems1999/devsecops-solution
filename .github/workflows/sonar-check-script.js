@@ -46,7 +46,7 @@ async function checkQualityGate({core, fetch}) {
     let totalWaitTime = 0;
     while (!taskAnalysisId && totalWaitTime < MAX_WAIT_TIME_SECONDS) {
         // API endpoint สำหรับค้นหา analysis ล่าสุด
-        const statusUrl = `${SONAR_HOST}/api/project_analyses/search?project=${PROJECT_KEY}&pageSize=1`;
+        const statusUrl = `${SONAR_HOST}api/project_analyses/search?project=${PROJECT_KEY}&pageSize=1`;
         
         core.info(`Attempting to fetch latest analysis... (Wait time: ${totalWaitTime}s)`);
         
