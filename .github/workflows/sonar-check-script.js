@@ -80,7 +80,7 @@ async function checkQualityGate({core, fetch}) {
     }
 
     if (!taskAnalysisId) {
-        core.setFailed("Could not find any recent Sonar analysis key after maximum wait time.");
+        core.setFailed("Could not find any recent Sonar analysis key after maximum wait time");
         return;
     }
 
