@@ -88,7 +88,7 @@ async function checkQualityGate({core, fetch}) {
     totalWaitTime = 0;
     while (qualityGateStatus === 'NONE' && totalWaitTime < MAX_WAIT_TIME_SECONDS) {
         // API endpoint สำหรับตรวจสอบสถานะ Quality Gate
-        const qualityGateUrl = `${SONAR_HOST}/api/qualitygates/project_status?analysisId=${taskAnalysisId}`;
+        const qualityGateUrl = `${SONAR_HOST}api/qualitygates/project_status?analysisId=${taskAnalysisId}`;
 
         core.info(`Checking Quality Gate status for analysis ID: ${taskAnalysisId} (Total wait: ${totalWaitTime}s)`);
 
