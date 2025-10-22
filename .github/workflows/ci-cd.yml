@@ -30,6 +30,9 @@ jobs:
       - name: Install App Dependencies
         run: npm install --prefix app
 
+      #คำสั่งนี้จะใช้ 'jest --coverage' จาก package.json เพื่อสร้าง app/coverage/lcov.info
+      - name: Run Unit Tests and Generate Coverage Report (LCOV)
+        run: npx jest --coverage --config app/package.json --forceExit
         
       # 1. รัน SonarQube Scan
       - name: SonarQube Scan
@@ -44,7 +47,8 @@ jobs:
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.sources=app \
-           
+            -Dsonar.javascript.lcov.reportPaths=app/coverage/lcov.info \
+            -Dsonar.coverage.exclusions=app/index.js
 
       - name: Delay to ensure Quality Gate Status is ready
         run: echo "Waiting for 30 seconds for SonarQube processing..." && sleep 30s
