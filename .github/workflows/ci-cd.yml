@@ -56,7 +56,6 @@ jobs:
         with:
           script: |
             const { checkQualityGate } = require('./.github/workflows/sonar-check-script.js');
-            // ส่งค่า Secrets ไปให้ script ใช้โดยตรง
             await checkQualityGate({
               github, 
               core, 
